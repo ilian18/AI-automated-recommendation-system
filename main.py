@@ -22,17 +22,21 @@ CLOTHS = {
 class Matrice_suggestion:
     def __init__(self, cloth):
         self.items = [CLOTHS[i] for i in CLOTHS]
+        self.id_cible = self.items.index(CLOTHS[cloth.lower()])
         self.matrix = self.mat()
         self.matrix_rec = self.m_suggestion()
         self.recommendation = self.suggestion()
-        self.id_cible = CLOTHS[cloth.lower()]
 
 
     
     def mat(self):
-        M = np.array()
+
+        # 1. On utilise une simple liste Python classique
+        M = []
         for i in self.items:
-            M.vstack(M,i)
+            items_attributes = [i.price, i.is_streetwear, i.is_pants, i.is_accessory, i.color]
+            M.append(items_attributes)
+        M = np.array(M)
         #linearisation
         normes = np.linalg.norm(M, axis=1, keepdims=True)
 
@@ -70,12 +74,12 @@ class Matrice_suggestion:
         # On retire le vêtement cible (le premier)
         top_3_indices_rapides = indices_finaux[1:]
 
-        rec = tuple()
+        rec = []
 
         for i in top_3_indices_rapides:
             for k in CLOTHS:
-                if CLOTHS[k] == self.matrix[top_3_indices_rapides]:
-                    rec = rec + k
+                if CLOTHS[k] == i:
+                    rec.append(k)
         return rec
 
     
