@@ -30,7 +30,7 @@ High-Performance Extraction: Replacement of the classic sorting algorithm (np.ar
 
 ## Tech Stack
 
-Language: Python 3.x
+Language: Python 3.7 (or above)
 
 Main Library: NumPy
 
