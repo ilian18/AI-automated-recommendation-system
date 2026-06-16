@@ -18,9 +18,9 @@ Data Modeling: Transformation of clothing attributes (price, style, type, color)
 
 Advanced Normalization:
 
-Use of Min-Max Scaling to prevent high values (like price) from squashing other binary attributes (style, type).
+* Use of Min-Max Scaling to prevent high values (like price) from squashing other binary attributes (style, type).
 
-Vector normalization ($\|v\| = 1$) with protection against division by zero (1e-9).
+* Vector normalization ($\|v\| = 1$) with protection against division by zero (1e-9).
 
 Vectorized Matrix Calculation: Use of matrix multiplication ($M \times M^T$) via NumPy to simultaneously calculate similarity scores for the entire catalog.
 
